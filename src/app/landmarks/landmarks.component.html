@@ -1,0 +1,53 @@
+<!-- Main Body Content -->
+<div>
+    
+  <!-- Opening Image -->
+  <img src="https://www.state.gov/wp-content/uploads/2019/06/shutterstock_646922527-2560x852.jpg" width="100%">
+
+  <!-- Page Caption -->
+  <h1 id="caption" class="text-center">Top Dubai Landmarks</h1>
+
+  <!-- Landmark List Items -->
+  <div id="cardList" *ngFor="let d of landmarksDisplay" class="row-lg-3 container-fluid">
+    <div id="card" class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <!-- Landmark Image -->
+          <img
+            id="img"
+            src="{{d.photo_thumb.url}}" 
+            width="100%" 
+            class="img-fluid rounded smaller" 
+            alt="{{d.title}}"
+            data-bs-toggle="modal" 
+            data-bs-target="#imgModal"
+            (click)="changeImgUrl(d.photo.url)"
+          >
+        </div>
+
+        <div class="col-md-8">
+          <div class="card-body">
+            <!-- Landmark Title -->
+            <span id="title" routerLink="article" (click)="changeLandmarkId(d.objectId)">
+              <h3 class="card-title">{{d.title}}</h3>
+            </span>
+            <!-- Landmark Info -->
+            <p class="card-text">{{d.short_info}}</p>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+
+  <!-- Image Modal -->
+  <div id="imgModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">    
+      <img
+        id="img-modal"
+        [src]="modalImg" 
+        class="modal-content img-fluid rounded"
+      >
+    </div>
+  </div>
+</div>
+  
